@@ -8,26 +8,19 @@ namespace CSharpPractice
 
 		static void calculate()
         {
-			Console.Write("Calculate: ");
-			String input = Console.ReadLine();
-			MyStack stack = new MyStack();
+            String exp = "2 + -10 / 2 * (3 - 1) / 2";
+            Console.WriteLine("Calculate: " + exp);
 
-			foreach(char c in input)
-            {
-                if (Char.IsDigit(c))
-                {
+            DataTable dt = new DataTable();
+            Console.WriteLine("DataTable: " + (double)dt.Compute(exp, ""));
 
-                }
-				stack.Push(c);
-            }
+            Console.WriteLine("Calculator: " + Calculator.Evaluate(exp));
+			
         }
 
         static void Main(string[] args)
         {
-			Console.WriteLine("Calculate");
-            DataTable dt = new DataTable();
-            double answer = (double)dt.Compute("2 + -10 / 2 * (3 - 1) / 2", "");
-            Console.WriteLine(answer);
+            calculate();
 
 
 		}
