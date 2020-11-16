@@ -8,7 +8,7 @@ namespace CSharpPractice
 
 		static void calculate()
         {
-            String exp = "2 + -10 / 2 * (3 - 1) / 2";
+            String exp = "2  -10 / 2 * (3 - 1) / 2";
             Console.WriteLine("Calculate: " + exp);
 
             DataTable dt = new DataTable();
@@ -20,9 +20,13 @@ namespace CSharpPractice
 
         static void Main(string[] args)
         {
-            calculate();
+            //calculate();
+            MyStack stack = new MyStack();
+            stack.Push('X');
+            stack.Push('Y');
+            stack.Push('Z');
 
 
-		}
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,19 +16,22 @@ namespace CSharpPractice
 
             for(int i=0; i < tokens.Length; ++i)
             {
-                if (Char.IsDigit(tokens[i]))
+                //if (Char.IsDigit(tokens[i]))
+                if (tokens[i] >= '0' && tokens[i] <= '9')
                 {
                     StringBuilder buff = new StringBuilder();
                     // Number might contain more than one digit
                     int j = i + 1;
-                    while(j < tokens.Length && Char.IsDigit(tokens[i]))
+                    //while (j < tokens.Length && tokens[i] >= '0' && tokens[i] <= '9')
+                    while (i < tokens.Length && tokens[i] >= '0' && tokens[i] <= '9')
                     {
-                        buff.Append(tokens[j]);
+                        buff.Append(tokens[i++]);
                         j++;
                     }
                     // Must point i to last digit.
                     // Loop will increment i to next position.
-                    i = j - 1;
+                    //i = j - 1;
+                    i--;
                     values.Push(int.Parse(buff.ToString()));
                 }
                 else if(tokens[i] == '(')
@@ -55,15 +58,15 @@ namespace CSharpPractice
                     // Push current operator
                     ops.Push(tokens[i]);
                 }
-
-                // At this point, the expression has been parsed.
-                // Now apply remaining ops to remaining values.
-                while(ops.Count > 0)
-                {
-                    values.Push(EvalOp(ops.Pop(), values.Pop(), values.Pop()));
-                }
-                
             }
+
+            // At this point, the expression has been parsed.
+            // Now apply remaining ops to remaining values.
+            while (ops.Count > 0)
+            {
+                values.Push(EvalOp(ops.Pop(), values.Pop(), values.Pop()));
+            }
+            // Top value is the result
             return values.Pop();
         }
 
